@@ -1,16 +1,27 @@
-import { prisma } from "@/config";
-import { Booking } from "@prisma/client";
+import { prisma } from '@/config';
+import { Booking } from '@prisma/client';
 
-type CreateParams = Omit<Booking, "id" | "createdAt" | "updatedAt">;
-type UpdateParams = Omit<Booking, "createdAt" | "updatedAt">;
+type CreateParams = Omit<Booking, 'id' | 'createdAt' | 'updatedAt'>;
+type UpdateParams = Omit<Booking, 'createdAt' | 'updatedAt'>;
 
 async function create({ roomId, userId }: CreateParams): Promise<Booking> {
   return prisma.booking.create({
     data: {
       roomId,
       userId,
-    }
+    },
   });
+}
+
+async function findBookingsByRoom() {
+  const result = await prisma.booking.groupBy({
+    by: ['roomId'],
+    _count: {
+      roomId: true,
+    },
+  });
+
+  return result.map(({ roomId, _count }) => ({ roomId, num_bookings: _count.roomId }));
 }
 
 async function findByRoomId(roomId: number) {
@@ -20,7 +31,7 @@ async function findByRoomId(roomId: number) {
     },
     include: {
       Room: true,
-    }
+    },
   });
 }
 
@@ -31,7 +42,7 @@ async function findByUserId(userId: number) {
     },
     include: {
       Room: true,
-    }
+    },
   });
 }
 
@@ -46,7 +57,7 @@ async function upsertBooking({ id, roomId, userId }: UpdateParams) {
     },
     update: {
       roomId,
-    }
+    },
   });
 }
 
@@ -55,6 +66,7 @@ const bookingRepository = {
   findByRoomId,
   findByUserId,
   upsertBooking,
+  findBookingsByRoom,
 };
 
 export default bookingRepository;
