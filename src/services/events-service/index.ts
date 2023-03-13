@@ -4,10 +4,12 @@ import { exclude } from "@/utils/prisma-utils";
 import { Event } from "@prisma/client";
 import dayjs from "dayjs";
 import { createClient } from "redis";
+import dotenv from "dotenv";
+dotenv.config();
 
 async function getFirstEvent(): Promise<GetFirstEventResult> {
   const redis = createClient({
-    url: "redis://localhost:6379"
+    url: process.env.REDIS_URL
   });
   await redis.connect();
   const cacheEvent = await redis.get("event");
