@@ -60,6 +60,171 @@ async function main() {
         image: "https://lh5.googleusercontent.com/p/AF1QipN_ppBDK1HWAZ7bFwpLNSfWHsWBlUtO2VZtZO-m=w253-h168-k-no"
       },
     ]
+  });
+
+  await prisma.room.createMany({
+    data: [
+      {
+        name: "101",
+        capacity: 2,
+        hotelId: 1,
+      },
+      {
+        name: "102",
+        capacity: 1,
+        hotelId: 1,
+      },
+      {
+        name: "103",
+        capacity: 2,
+        hotelId: 1,
+      },
+      {
+        name: "104",
+        capacity: 1,
+        hotelId: 1,
+      },
+      {
+        name: "105",
+        capacity: 3,
+        hotelId: 1,
+      },
+      {
+        name: "106",
+        capacity: 1,
+        hotelId: 1,
+      },
+      {
+        name: "107",
+        capacity: 2,
+        hotelId: 1,
+      },
+      {
+        name: "108",
+        capacity: 1,
+        hotelId: 1,
+      },
+      {
+        name: "101",
+        capacity: 2,
+        hotelId: 2,
+      },
+      {
+        name: "102",
+        capacity: 1,
+        hotelId: 2,
+      },
+      {
+        name: "103",
+        capacity: 2,
+        hotelId: 2,
+      },
+      {
+        name: "104",
+        capacity: 1,
+        hotelId: 2,
+      },
+      {
+        name: "105",
+        capacity: 3,
+        hotelId: 2,
+      },
+      {
+        name: "106",
+        capacity: 1,
+        hotelId: 2,
+      },
+      {
+        name: "107",
+        capacity: 2,
+        hotelId: 2,
+      },
+      {
+        name: "108",
+        capacity: 1,
+        hotelId: 2,
+      },
+      {
+        name: "101",
+        capacity: 2,
+        hotelId: 3,
+      },
+      {
+        name: "102",
+        capacity: 1,
+        hotelId: 3,
+      },
+      {
+        name: "103",
+        capacity: 2,
+        hotelId: 3,
+      },
+      {
+        name: "104",
+        capacity: 1,
+        hotelId: 3,
+      },
+      {
+        name: "105",
+        capacity: 3,
+        hotelId: 3,
+      },
+      {
+        name: "106",
+        capacity: 1,
+        hotelId: 3,
+      },
+      {
+        name: "107",
+        capacity: 2,
+        hotelId: 3,
+      },
+      {
+        name: "108",
+        capacity: 1,
+        hotelId: 3,
+      },
+      {
+        name: "101",
+        capacity: 2,
+        hotelId: 4,
+      },
+      {
+        name: "102",
+        capacity: 1,
+        hotelId: 4,
+      },
+      {
+        name: "103",
+        capacity: 2,
+        hotelId: 4,
+      },
+      {
+        name: "104",
+        capacity: 1,
+        hotelId: 4,
+      },
+      {
+        name: "105",
+        capacity: 3,
+        hotelId: 4,
+      },
+      {
+        name: "106",
+        capacity: 1,
+        hotelId: 4,
+      },
+      {
+        name: "107",
+        capacity: 2,
+        hotelId: 4,
+      },
+      {
+        name: "108",
+        capacity: 1,
+        hotelId: 4,
+      },
+    ]
   })
 }
 
