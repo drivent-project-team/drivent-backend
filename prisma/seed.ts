@@ -43,29 +43,29 @@ async function main() {
 
   const hotel1 = await prisma.hotel.create({
     data: {
-      name: "Pousada Samba Pa Ti",
-      image: "https://lh3.googleusercontent.com/p/AF1QipPRvIxooymtOpFwVYbRCZIOPm-yeM34Apqwxh4=w296-h202-n-k-rw-no-v1"
+      name: "Pousada Samba",
+      image: "https://viajandocomamalarosa.com.br/wp-content/uploads/2020/05/Ocean-Palace.jpg"
     }
   });
   
   const hotel2 = await prisma.hotel.create({
     data: {
-      name: "SERHS Grand Hotel & Resort",
-      image: "https://lh3.googleusercontent.com/p/AF1QipP871XPsVNJR4QFZ1o6MYZUKZkUq90r2-AEqGzs=w296-h202-n-k-rw-no-v1"
+      name: "Mar Hotel",
+      image: "https://www.carpemundi.com.br/wp-content/uploads/2020/07/melhores-resorts-brasil.jpg"
     }
   });
   
   const hotel3 = await prisma.hotel.create({
     data: {
       name: "Hotel Village",
-      image: "https://lh3.googleusercontent.com/p/AF1QipOtlrXjRSXfVGFnLSg3BWsIGM5wbPcmicvQQl2V=w296-h202-n-k-rw-no-v1"
+      image: "https://media.staticontent.com/media/pictures/787e6fc3-e840-452f-a2a7-39fa47ee5d9a"
     }
   });
   
   const hotel4 = await prisma.hotel.create({
     data: {
       name: "SH Blue Suítes",
-      image: "https://lh5.googleusercontent.com/p/AF1QipN_ppBDK1HWAZ7bFwpLNSfWHsWBlUtO2VZtZO-m=w253-h168-k-no"
+      image: "https://upload.wikimedia.org/wikipedia/commons/d/df/Town_and_Country_fh000023.jpg"
     }
   });
   
