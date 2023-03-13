@@ -41,188 +41,196 @@ async function main() {
     ],
   });
 
-  await prisma.hotel.createMany({
-    data: [
-      {
-        name: "Pousada Parati",
-        image: "https://visualpraiahotel.com.br/wp-content/uploads/2021/11/hotel-beira-mar-em-natal-Visual-Praia-2.jpg"
-      },
-      {
-        name: "SERHS Hotel",
-        image: "https://lh3.googleusercontent.com/p/AF1QipP871XPsVNJR4QFZ1o6MYZUKZkUq90r2-AEqGzs=w296-h202-n-k-rw-no-v1"
-      },
-      {
-        name: "Hotel Village",
-        image: "https://www.dicasdeviagem.com/wp-content/uploads/2022/05/hotel-fasano-angra-dos-reis-e1652707437760.jpg"
-      },
-      {
-        name: "SH Blue Suítes",
-        image: "https://www.aldeiadapraia.com.br/wp-content/uploads/2020/09/psicina.jpg"
-      },
-    ]
+  const hotel1 = await prisma.hotel.create({
+    data: {
+      name: "Pousada Samba",
+      image: "https://viajandocomamalarosa.com.br/wp-content/uploads/2020/05/Ocean-Palace.jpg"
+    }
   });
+  
+  const hotel2 = await prisma.hotel.create({
+    data: {
+      name: "Mar Hotel",
+      image: "https://www.carpemundi.com.br/wp-content/uploads/2020/07/melhores-resorts-brasil.jpg"
+    }
+  });
+  
+  const hotel3 = await prisma.hotel.create({
+    data: {
+      name: "Hotel Village",
+      image: "https://media.staticontent.com/media/pictures/787e6fc3-e840-452f-a2a7-39fa47ee5d9a"
+    }
+  });
+  
+  const hotel4 = await prisma.hotel.create({
+    data: {
+      name: "SH Blue Suítes",
+      image: "https://upload.wikimedia.org/wikipedia/commons/d/df/Town_and_Country_fh000023.jpg"
+    }
+  });
+  
 
   await prisma.room.createMany({
     data: [
       {
         name: "101",
         capacity: 2,
-        hotelId: 1,
+        hotelId: hotel1.id,
       },
       {
         name: "102",
         capacity: 1,
-        hotelId: 1,
+        hotelId: hotel1.id,
       },
       {
         name: "103",
         capacity: 2,
-        hotelId: 1,
+        hotelId: hotel1.id,
       },
       {
         name: "104",
         capacity: 1,
-        hotelId: 1,
+        hotelId: hotel1.id,
       },
       {
         name: "105",
         capacity: 3,
-        hotelId: 1,
+        hotelId: hotel1.id,
       },
       {
         name: "106",
         capacity: 1,
-        hotelId: 1,
+        hotelId: hotel1.id,
       },
       {
         name: "107",
         capacity: 2,
-        hotelId: 1,
+        hotelId: hotel1.id,
       },
       {
         name: "108",
         capacity: 1,
-        hotelId: 1,
+        hotelId: hotel1.id,
       },
       {
         name: "101",
         capacity: 2,
-        hotelId: 2,
+        hotelId: hotel2.id,
       },
       {
         name: "102",
         capacity: 1,
-        hotelId: 2,
+        hotelId: hotel2.id,
       },
       {
         name: "103",
         capacity: 2,
-        hotelId: 2,
+        hotelId: hotel2.id,
       },
       {
         name: "104",
         capacity: 1,
-        hotelId: 2,
+        hotelId: hotel2.id,
       },
       {
         name: "105",
         capacity: 3,
-        hotelId: 2,
+        hotelId: hotel2.id,
       },
       {
         name: "106",
         capacity: 1,
-        hotelId: 2,
+        hotelId: hotel2.id,
       },
       {
         name: "107",
         capacity: 2,
-        hotelId: 2,
+        hotelId: hotel2.id,
       },
       {
         name: "108",
         capacity: 1,
-        hotelId: 2,
+        hotelId: hotel2.id,
       },
       {
         name: "101",
         capacity: 2,
-        hotelId: 3,
+        hotelId: hotel3.id,
       },
       {
         name: "102",
         capacity: 1,
-        hotelId: 3,
+        hotelId: hotel3.id,
       },
       {
         name: "103",
         capacity: 2,
-        hotelId: 3,
+        hotelId: hotel3.id,
       },
       {
         name: "104",
         capacity: 1,
-        hotelId: 3,
+        hotelId: hotel3.id,
       },
       {
         name: "105",
         capacity: 3,
-        hotelId: 3,
+        hotelId: hotel3.id,
       },
       {
         name: "106",
         capacity: 1,
-        hotelId: 3,
+        hotelId: hotel3.id,
       },
       {
         name: "107",
         capacity: 2,
-        hotelId: 3,
+        hotelId: hotel3.id,
       },
       {
         name: "108",
         capacity: 1,
-        hotelId: 3,
+        hotelId: hotel3.id,
       },
       {
         name: "101",
         capacity: 2,
-        hotelId: 4,
+        hotelId: hotel4.id,
       },
       {
         name: "102",
         capacity: 1,
-        hotelId: 4,
+        hotelId: hotel4.id,
       },
       {
         name: "103",
         capacity: 2,
-        hotelId: 4,
+        hotelId: hotel4.id,
       },
       {
         name: "104",
         capacity: 1,
-        hotelId: 4,
+        hotelId: hotel4.id,
       },
       {
         name: "105",
         capacity: 3,
-        hotelId: 4,
+        hotelId: hotel4.id,
       },
       {
         name: "106",
         capacity: 1,
-        hotelId: 4,
+        hotelId: hotel4.id,
       },
       {
         name: "107",
         capacity: 2,
-        hotelId: 4,
+        hotelId: hotel4.id,
       },
       {
         name: "108",
         capacity: 1,
-        hotelId: 4,
+        hotelId: hotel4.id,
       },
     ]
   })
