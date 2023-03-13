@@ -40,6 +40,27 @@ async function main() {
       },
     ],
   });
+
+  await prisma.hotel.createMany({
+    data: [
+      {
+        name: "Pousada Samba Pa Ti",
+        image: "https://lh3.googleusercontent.com/p/AF1QipPRvIxooymtOpFwVYbRCZIOPm-yeM34Apqwxh4=w296-h202-n-k-rw-no-v1"
+      },
+      {
+        name: "SERHS Grand Hotel & Resort",
+        image: "https://lh3.googleusercontent.com/p/AF1QipP871XPsVNJR4QFZ1o6MYZUKZkUq90r2-AEqGzs=w296-h202-n-k-rw-no-v1"
+      },
+      {
+        name: "Hotel Village",
+        image: "https://lh3.googleusercontent.com/p/AF1QipOtlrXjRSXfVGFnLSg3BWsIGM5wbPcmicvQQl2V=w296-h202-n-k-rw-no-v1"
+      },
+      {
+        name: "SH Blue Suítes",
+        image: "https://lh5.googleusercontent.com/p/AF1QipN_ppBDK1HWAZ7bFwpLNSfWHsWBlUtO2VZtZO-m=w253-h168-k-no"
+      },
+    ]
+  })
 }
 
 main()

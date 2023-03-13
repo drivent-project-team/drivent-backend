@@ -11,7 +11,6 @@ async function getFirstEvent(): Promise<GetFirstEventResult> {
   });
   await redis.connect();
   const cacheEvent = await redis.get("event");
-  console.log(cacheEvent);
 
   if (cacheEvent) {
     return JSON.parse(cacheEvent);
