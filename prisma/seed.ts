@@ -235,27 +235,6 @@ async function main() {
     ]
   })
 
-  const day1 = await prisma.eventDates.create({
-    data: {
-      date: dayjs().toDate(),
-      eventId: event.id,
-    }
-  })
-
-  const day2 = await prisma.eventDates.create({
-    data: {
-      date: dayjs().add(1, 'day').toDate(),
-      eventId: event.id,
-    }
-  })
-
-  const day3 = await prisma.eventDates.create({
-    data: {
-      date: dayjs().add(2, 'day').toDate(),
-      eventId: event.id,
-    }
-  })
-
 
   const place1 = await prisma.place.create({
     data: {
@@ -279,7 +258,7 @@ async function main() {
     data: [
       {
         placeId: place1.id,
-        date: day1.id,
+        date: dayjs().toDate(),
         name: 'Minicurso React',
         capacity: 27,
         startAt: '09:00',
@@ -287,7 +266,7 @@ async function main() {
       },
       {
         placeId: place1.id,
-        date: day1.id,
+        date: dayjs().toDate(),
         name: 'Minicurso Prisma',
         capacity: 12,
         startAt: '10:00',
@@ -295,7 +274,7 @@ async function main() {
       },
       {
         placeId: place2.id,
-        date: day1.id,
+        date: dayjs().toDate(),
         name: 'Minicurso Node',
         capacity: 10,
         startAt: '09:00',
@@ -303,7 +282,7 @@ async function main() {
       },
       {
         placeId: place2.id,
-        date: day1.id,
+        date: dayjs().toDate(),
         name: 'Minicurso Typescript',
         capacity: 0,
         startAt: '10:00',
@@ -311,7 +290,7 @@ async function main() {
       },
       {
         placeId: place3.id,
-        date: day1.id,
+        date: dayjs().toDate(),
         name: 'Minicurso HTML Semântico',
         capacity: 17,
         startAt: '09:00',
@@ -319,7 +298,7 @@ async function main() {
       },
       {
         placeId: place3.id,
-        date: day1.id,
+        date: dayjs().toDate(),
         name: 'Minicurso CSS',
         capacity: 27,
         startAt: '09:00',
@@ -327,7 +306,7 @@ async function main() {
       },
       {
         placeId: place1.id,
-        date: day2.id,
+        date: dayjs().add(1, 'day').toDate(),
         name: 'Minicurso Express',
         capacity: 10,
         startAt: '09:00',
@@ -335,7 +314,7 @@ async function main() {
       },
       {
         placeId: place1.id,
-        date: day2.id,
+        date: dayjs().add(1, 'day').toDate(),
         name: 'Minicurso Joy',
         capacity: 0,
         startAt: '10:00',
@@ -343,7 +322,7 @@ async function main() {
       },
       {
         placeId: place2.id,
-        date: day2.id,
+        date: dayjs().add(1, 'day').toDate(),
         name: 'Minicurso Mongodb',
         capacity: 11,
         startAt: '09:00',
@@ -351,7 +330,7 @@ async function main() {
       },
       {
         placeId: place2.id,
-        date: day2.id,
+        date: dayjs().add(1, 'day').toDate(),
         name: 'Minicurso SQL',
         capacity: 3,
         startAt: '10:00',
@@ -359,7 +338,7 @@ async function main() {
       },
       {
         placeId: place3.id,
-        date: day2.id,
+        date: dayjs().add(1, 'day').toDate(),
         name: 'Minicurso Postgres',
         capacity: 27,
         startAt: '09:00',
@@ -367,7 +346,7 @@ async function main() {
       },
       {
         placeId: place3.id,
-        date: day2.id,
+        date: dayjs().add(1, 'day').toDate(),
         name: 'Minicurso JavaScript',
         capacity: 8,
         startAt: '09:00',
@@ -375,7 +354,7 @@ async function main() {
       },
       {
         placeId: place1.id,
-        date: day1.id,
+        date: dayjs().add(2, 'day').toDate(),
         name: 'Minicurso ES6',
         capacity: 6,
         startAt: '09:00',
@@ -383,7 +362,7 @@ async function main() {
       },
       {
         placeId: place1.id,
-        date: day1.id,
+        date: dayjs().add(2, 'day').toDate(),
         name: 'Minicurso Testes Unitários',
         capacity: 15,
         startAt: '10:00',
@@ -391,7 +370,7 @@ async function main() {
       },
       {
         placeId: place2.id,
-        date: day1.id,
+        date: dayjs().add(2, 'day').toDate(),
         name: 'Minicurso Scrum',
         capacity: 0,
         startAt: '09:00',
@@ -399,7 +378,7 @@ async function main() {
       },
       {
         placeId: place2.id,
-        date: day1.id,
+        date: dayjs().add(2, 'day').toDate(),
         name: 'Minicurso Testes de Integração',
         capacity: 10,
         startAt: '10:00',
@@ -407,7 +386,7 @@ async function main() {
       },
       {
         placeId: place3.id,
-        date: day1.id,
+        date: dayjs().add(2, 'day').toDate(),
         name: 'Minicurso Git',
         capacity: 12,
         startAt: '09:00',
@@ -415,7 +394,7 @@ async function main() {
       },
       {
         placeId: place3.id,
-        date: day1.id,
+        date: dayjs().add(2, 'day').toDate(),
         name: 'Hackathon',
         capacity: 27,
         startAt: '09:00',
