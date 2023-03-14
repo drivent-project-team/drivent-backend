@@ -4,11 +4,9 @@ import { Response } from 'express';
 import httpStatus from 'http-status';
 
 
-export async function listDates(req: AuthenticatedRequest, res: Response) {
+export async function listActivities(req: AuthenticatedRequest, res: Response) {
     try {
-    const {eventId} = req.body.eventId;
-      const dates = await activitiesService.getEventDates(eventId);
-      console.log(dates)
+      const dates = await activitiesService.getEventActivities();
       return res.status(httpStatus.OK).send({
         dates
       });

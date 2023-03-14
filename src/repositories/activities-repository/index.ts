@@ -1,10 +1,7 @@
 import { prisma } from '@/config';
 
-async function findDatesByEventId(eventId: number) {
+async function findActivitiesWithPlaces() {
   return prisma.activity.findMany({
-    where: {
-      id: eventId,
-    },
     include: {
       Place: true,
     },
@@ -13,7 +10,7 @@ async function findDatesByEventId(eventId: number) {
 
 
 const activitiesRepository = {
-    findDatesByEventId
+    findActivitiesWithPlaces
   };
   
   export default activitiesRepository;
