@@ -11,14 +11,15 @@ datasource db {
 }
 
 model User {
-  id         Int          @id @default(autoincrement())
-  email      String       @unique @db.VarChar(255)
-  password   String       @db.VarChar(255)
-  createdAt  DateTime     @default(now())
-  updatedAt  DateTime     @updatedAt
-  Session    Session[]
-  Enrollment Enrollment[]
-  Booking    Booking[]
+  id           Int            @id @default(autoincrement())
+  email        String         @unique @db.VarChar(255)
+  password     String         @db.VarChar(255)
+  createdAt    DateTime       @default(now())
+  updatedAt    DateTime       @updatedAt
+  Session      Session[]
+  Enrollment   Enrollment[]
+  Booking      Booking[]
+  userActivity userActivity[]
 }
 
 model Session {
@@ -31,14 +32,15 @@ model Session {
 }
 
 model Event {
-  id                 Int      @id @default(autoincrement())
-  title              String   @db.VarChar(255)
-  backgroundImageUrl String   @db.VarChar(255)
-  logoImageUrl       String   @db.VarChar(255)
+  id                 Int          @id @default(autoincrement())
+  title              String       @db.VarChar(255)
+  backgroundImageUrl String       @db.VarChar(255)
+  logoImageUrl       String       @db.VarChar(255)
   startsAt           DateTime
   endsAt             DateTime
-  createdAt          DateTime @default(now())
-  updatedAt          DateTime @updatedAt
+  createdAt          DateTime     @default(now())
+  updatedAt          DateTime     @updatedAt
+  Dates              eventDates[]
 }
 
 model Enrollment {
@@ -137,4 +139,43 @@ model Booking {
   roomId    Int
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
+}
+
+model Place {
+  id        Int        @id @default(autoincrement())
+  name      String
+  createdAt DateTime   @default(now())
+  updatedAt DateTime   @updatedAt
+  Activity  Activity[]
+}
+
+model eventDates {
+  id       Int        @id @default(autoincrement())
+  eventId  Int
+  Event    Event      @relation(fields: [eventId], references: [id])
+  date     DateTime
+  Activity Activity[]
+}
+
+model Activity {
+  id           Int            @id @default(autoincrement())
+  placeId      Int
+  Place        Place          @relation(fields: [placeId], references: [id])
+  date         Int
+  Date         eventDates     @relation(fields: [date], references: [id])
+  name         String
+  capacity     Int
+  startAt      String
+  endsAt       String
+  createdAt    DateTime       @default(now())
+  updatedAt    DateTime       @updatedAt
+  userActivity userActivity[]
+}
+
+model userActivity {
+  id         Int      @id @default(autoincrement())
+  userId     Int
+  User       User     @relation(fields: [userId], references: [id])
+  activityId Int
+  Activity   Activity @relation(fields: [activityId], references: [id])
 }
