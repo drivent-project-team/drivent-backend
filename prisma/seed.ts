@@ -289,7 +289,7 @@ async function main() {
         placeId: place1.id,
         date: day1.id,
         name: 'Minicurso Prisma',
-        capacity: 27,
+        capacity: 12,
         startAt: '10:00',
         endsAt: '11:00'
       },
@@ -297,7 +297,7 @@ async function main() {
         placeId: place2.id,
         date: day1.id,
         name: 'Minicurso Node',
-        capacity: 27,
+        capacity: 10,
         startAt: '09:00',
         endsAt: '10:00'
       },
@@ -305,7 +305,7 @@ async function main() {
         placeId: place2.id,
         date: day1.id,
         name: 'Minicurso Typescript',
-        capacity: 27,
+        capacity: 0,
         startAt: '10:00',
         endsAt: '11:00'
       },
@@ -313,7 +313,7 @@ async function main() {
         placeId: place3.id,
         date: day1.id,
         name: 'Minicurso HTML Semântico',
-        capacity: 27,
+        capacity: 17,
         startAt: '09:00',
         endsAt: '10:00'
       },
@@ -329,7 +329,7 @@ async function main() {
         placeId: place1.id,
         date: day2.id,
         name: 'Minicurso Express',
-        capacity: 27,
+        capacity: 10,
         startAt: '09:00',
         endsAt: '10:00'
       },
@@ -337,7 +337,7 @@ async function main() {
         placeId: place1.id,
         date: day2.id,
         name: 'Minicurso Joy',
-        capacity: 27,
+        capacity: 0,
         startAt: '10:00',
         endsAt: '11:00'
       },
@@ -345,7 +345,7 @@ async function main() {
         placeId: place2.id,
         date: day2.id,
         name: 'Minicurso Mongodb',
-        capacity: 27,
+        capacity: 11,
         startAt: '09:00',
         endsAt: '10:00'
       },
@@ -353,7 +353,7 @@ async function main() {
         placeId: place2.id,
         date: day2.id,
         name: 'Minicurso SQL',
-        capacity: 27,
+        capacity: 3,
         startAt: '10:00',
         endsAt: '11:00'
       },
@@ -369,7 +369,7 @@ async function main() {
         placeId: place3.id,
         date: day2.id,
         name: 'Minicurso JavaScript',
-        capacity: 27,
+        capacity: 8,
         startAt: '09:00',
         endsAt: '10:00'
       },
@@ -377,7 +377,7 @@ async function main() {
         placeId: place1.id,
         date: day1.id,
         name: 'Minicurso ES6',
-        capacity: 27,
+        capacity: 6,
         startAt: '09:00',
         endsAt: '10:00'
       },
@@ -385,7 +385,7 @@ async function main() {
         placeId: place1.id,
         date: day1.id,
         name: 'Minicurso Testes Unitários',
-        capacity: 27,
+        capacity: 15,
         startAt: '10:00',
         endsAt: '11:00'
       },
@@ -393,7 +393,7 @@ async function main() {
         placeId: place2.id,
         date: day1.id,
         name: 'Minicurso Scrum',
-        capacity: 27,
+        capacity: 0,
         startAt: '09:00',
         endsAt: '10:00'
       },
@@ -401,7 +401,7 @@ async function main() {
         placeId: place2.id,
         date: day1.id,
         name: 'Minicurso Testes de Integração',
-        capacity: 27,
+        capacity: 10,
         startAt: '10:00',
         endsAt: '11:00'
       },
@@ -409,7 +409,7 @@ async function main() {
         placeId: place3.id,
         date: day1.id,
         name: 'Minicurso Git',
-        capacity: 27,
+        capacity: 12,
         startAt: '09:00',
         endsAt: '10:00'
       },
