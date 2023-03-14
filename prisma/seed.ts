@@ -47,28 +47,28 @@ async function main() {
       image: "https://viajandocomamalarosa.com.br/wp-content/uploads/2020/05/Ocean-Palace.jpg"
     }
   });
-  
+
   const hotel2 = await prisma.hotel.create({
     data: {
       name: "Mar Hotel",
       image: "https://www.carpemundi.com.br/wp-content/uploads/2020/07/melhores-resorts-brasil.jpg"
     }
   });
-  
+
   const hotel3 = await prisma.hotel.create({
     data: {
       name: "Hotel Village",
       image: "https://media.staticontent.com/media/pictures/787e6fc3-e840-452f-a2a7-39fa47ee5d9a"
     }
   });
-  
+
   const hotel4 = await prisma.hotel.create({
     data: {
       name: "SH Blue Suítes",
       image: "https://upload.wikimedia.org/wikipedia/commons/d/df/Town_and_Country_fh000023.jpg"
     }
   });
-  
+
 
   await prisma.room.createMany({
     data: [
@@ -234,7 +234,199 @@ async function main() {
       },
     ]
   })
+
+  const day1 = await prisma.eventDates.create({
+    data: {
+      date: dayjs().toDate(),
+      eventId: event.id,
+    }
+  })
+
+  const day2 = await prisma.eventDates.create({
+    data: {
+      date: dayjs().add(1, 'day').toDate(),
+      eventId: event.id,
+    }
+  })
+
+  const day3 = await prisma.eventDates.create({
+    data: {
+      date: dayjs().add(2, 'day').toDate(),
+      eventId: event.id,
+    }
+  })
+
+
+  const place1 = await prisma.place.create({
+    data: {
+      name: 'Auditório Principal'
+    }
+  })
+
+  const place2 = await prisma.place.create({
+    data: {
+      name: 'Auditório Lateral'
+    }
+  })
+
+  const place3 = await prisma.place.create({
+    data: {
+      name: 'Sala de Workshops'
+    }
+  })
+
+  await prisma.activity.createMany({
+    data: [
+      {
+        placeId: place1.id,
+        date: day1.id,
+        name: 'Minicurso React',
+        capacity: 27,
+        startAt: '09:00',
+        endsAt: '10:00'
+      },
+      {
+        placeId: place1.id,
+        date: day1.id,
+        name: 'Minicurso Prisma',
+        capacity: 27,
+        startAt: '10:00',
+        endsAt: '11:00'
+      },
+      {
+        placeId: place2.id,
+        date: day1.id,
+        name: 'Minicurso Node',
+        capacity: 27,
+        startAt: '09:00',
+        endsAt: '10:00'
+      },
+      {
+        placeId: place2.id,
+        date: day1.id,
+        name: 'Minicurso Typescript',
+        capacity: 27,
+        startAt: '10:00',
+        endsAt: '11:00'
+      },
+      {
+        placeId: place3.id,
+        date: day1.id,
+        name: 'Minicurso HTML Semântico',
+        capacity: 27,
+        startAt: '09:00',
+        endsAt: '10:00'
+      },
+      {
+        placeId: place3.id,
+        date: day1.id,
+        name: 'Minicurso CSS',
+        capacity: 27,
+        startAt: '09:00',
+        endsAt: '10:00'
+      },
+      {
+        placeId: place1.id,
+        date: day2.id,
+        name: 'Minicurso Express',
+        capacity: 27,
+        startAt: '09:00',
+        endsAt: '10:00'
+      },
+      {
+        placeId: place1.id,
+        date: day2.id,
+        name: 'Minicurso Joy',
+        capacity: 27,
+        startAt: '10:00',
+        endsAt: '11:00'
+      },
+      {
+        placeId: place2.id,
+        date: day2.id,
+        name: 'Minicurso Mongodb',
+        capacity: 27,
+        startAt: '09:00',
+        endsAt: '10:00'
+      },
+      {
+        placeId: place2.id,
+        date: day2.id,
+        name: 'Minicurso SQL',
+        capacity: 27,
+        startAt: '10:00',
+        endsAt: '11:00'
+      },
+      {
+        placeId: place3.id,
+        date: day2.id,
+        name: 'Minicurso Postgres',
+        capacity: 27,
+        startAt: '09:00',
+        endsAt: '10:00'
+      },
+      {
+        placeId: place3.id,
+        date: day2.id,
+        name: 'Minicurso JavaScript',
+        capacity: 27,
+        startAt: '09:00',
+        endsAt: '10:00'
+      },
+      {
+        placeId: place1.id,
+        date: day1.id,
+        name: 'Minicurso ES6',
+        capacity: 27,
+        startAt: '09:00',
+        endsAt: '10:00'
+      },
+      {
+        placeId: place1.id,
+        date: day1.id,
+        name: 'Minicurso Testes Unitários',
+        capacity: 27,
+        startAt: '10:00',
+        endsAt: '11:00'
+      },
+      {
+        placeId: place2.id,
+        date: day1.id,
+        name: 'Minicurso Scrum',
+        capacity: 27,
+        startAt: '09:00',
+        endsAt: '10:00'
+      },
+      {
+        placeId: place2.id,
+        date: day1.id,
+        name: 'Minicurso Testes de Integração',
+        capacity: 27,
+        startAt: '10:00',
+        endsAt: '11:00'
+      },
+      {
+        placeId: place3.id,
+        date: day1.id,
+        name: 'Minicurso Git',
+        capacity: 27,
+        startAt: '09:00',
+        endsAt: '10:00'
+      },
+      {
+        placeId: place3.id,
+        date: day1.id,
+        name: 'Hackathon',
+        capacity: 27,
+        startAt: '09:00',
+        endsAt: '10:00'
+      },
+    ]
+  })
+
 }
+
+
 
 main()
   .catch((e) => {
