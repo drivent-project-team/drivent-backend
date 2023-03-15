@@ -1,13 +1,13 @@
 import { Router } from "express";
 import { authenticateToken } from "@/middlewares";
-import { listDates } from "@/controllers";
+import { listActivities } from "@/controllers";
 
 
 const activitiesRouter = Router();
 
 activitiesRouter
   .all("/*", authenticateToken)
-  .get("", listDates)
+  .get("", listActivities)
   
 
 export { activitiesRouter };

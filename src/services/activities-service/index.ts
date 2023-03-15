@@ -1,8 +1,8 @@
 import { notFoundError } from "@/errors";
 import activitiesRepository from "@/repositories/activities-repository";
 
-async function getEventDates(eventId: number) {
-    const dates = await activitiesRepository.findDatesByEventId(eventId);
+async function getEventActivities() {
+    const dates = await activitiesRepository.findActivitiesWithPlaces();
     if (!dates) {
       throw notFoundError();
     }
@@ -11,7 +11,7 @@ async function getEventDates(eventId: number) {
 
 
   const activitiesService = {
-    getEventDates
+    getEventActivities
   };
   
   export default activitiesService;

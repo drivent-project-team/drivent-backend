@@ -40,7 +40,6 @@ model Event {
   endsAt             DateTime
   createdAt          DateTime     @default(now())
   updatedAt          DateTime     @updatedAt
-  Dates              eventDates[]
 }
 
 model Enrollment {
@@ -149,20 +148,11 @@ model Place {
   Activity  Activity[]
 }
 
-model eventDates {
-  id       Int        @id @default(autoincrement())
-  eventId  Int
-  Event    Event      @relation(fields: [eventId], references: [id])
-  date     DateTime
-  Activity Activity[]
-}
-
 model Activity {
   id           Int            @id @default(autoincrement())
   placeId      Int
   Place        Place          @relation(fields: [placeId], references: [id])
-  date         Int
-  Date         eventDates     @relation(fields: [date], references: [id])
+  date         DateTime
   name         String
   capacity     Int
   startAt      String
