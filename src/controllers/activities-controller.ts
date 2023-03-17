@@ -15,6 +15,25 @@ export async function listActivities(req: AuthenticatedRequest, res: Response) {
   }
 }
 
+export async function getPlaces(req: AuthenticatedRequest, res: Response) {
+  try {
+    const places = await activitiesService.getPlaces();
+    return res.status(httpStatus.OK).send(places);
+  } catch (error) {
+    return res.sendStatus(httpStatus.NOT_FOUND);
+  }
+}
+
+export async function getActivitiesByDate(req: AuthenticatedRequest, res: Response) {
+  const { date } = req.params;
+  try {
+    const activities = await activitiesService.getActivitiesByDate(date);
+    return res.status(httpStatus.OK).send(activities);
+  } catch (error) {
+    return res.sendStatus(httpStatus.NOT_FOUND);
+  }
+}
+
 export async function postActivity(req: AuthenticatedRequest, res: Response) {
   const { userId } = req;
   const { activityId } = req.body;
@@ -38,3 +57,4 @@ export async function postActivity(req: AuthenticatedRequest, res: Response) {
     }
   }
 }
+
