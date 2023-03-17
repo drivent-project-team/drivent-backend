@@ -1,23 +1,27 @@
-import { prisma } from '@/config';
-import faker from '@faker-js/faker';
+import { prisma } from "@/config";
+import faker from "@faker-js/faker";
 
 export async function createPlace() {
-  return prisma.place.create({
-    data: {
-      name: faker.datatype.string(),
-    },
-  });
+  return await prisma.place.create(
+    {
+      data: {
+        name: faker.address.county()
+      }
+    }
+  );
 }
 
 export async function createActivity(placeId: number) {
-  return prisma.activity.create({
-    data: {
-      name: faker.datatype.string(),
-      placeId,
-      date: faker.date.soon(),
-      startAt: faker.datatype.string(),
-      endsAt: faker.datatype.string(),
-      capacity: faker.datatype.number({ min: 1, max: 200 }),
-    },
-  });
+  return await prisma.activity.create(
+    {
+      data: {
+        capacity: Number(faker.random.numeric()),
+        name: faker.lorem.words(),
+        date: faker.datatype.datetime(),
+        startAt: "",
+        endsAt: "",
+        placeId
+      }
+    }
+  );
 }

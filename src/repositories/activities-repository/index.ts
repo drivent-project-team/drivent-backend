@@ -1,5 +1,6 @@
-import { prisma } from '@/config';
-import dayjs from 'dayjs';
+import { prisma } from "@/config";
+import dayjs from "dayjs";
+
 
 async function findActivitiesWithPlaces() {
   return prisma.activity.findMany({
@@ -23,10 +24,41 @@ async function findActivitiesByDate(date: string) {
   });
 }
 
+async function create(userId: number, activityId: number) {
+  return prisma.userActivity.create({
+    data: {
+      userId,
+      activityId
+    }
+  });
+}
+
+async function findActivityById(id: number) {
+  return prisma.activity.findFirst({
+    where: {
+      id
+    }
+  });
+}
+
+async function findActivitiesByUserId(userId: number) {
+  return prisma.userActivity.findMany({
+    where: {
+      userId
+    },
+    include: {
+      Activity: true
+    }
+  });
+}
+
 const activitiesRepository = {
   findActivitiesWithPlaces,
   getPlaces,
   findActivitiesByDate,
+   create,
+  findActivityById,
+  findActivitiesByUserId,
 };
 
 export default activitiesRepository;

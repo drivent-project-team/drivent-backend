@@ -8,6 +8,7 @@ import dotenv from "dotenv";
 dotenv.config();
 
 async function getFirstEvent(): Promise<GetFirstEventResult> {
+  //return eventRepository.findFirst()
   const redis = createClient({
     url: process.env.REDIS_URL
   });
