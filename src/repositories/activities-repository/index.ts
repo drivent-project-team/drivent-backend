@@ -1,4 +1,4 @@
-import { prisma } from '@/config';
+import { prisma } from "@/config";
 
 async function findActivitiesWithPlaces() {
   return prisma.activity.findMany({
@@ -8,10 +8,13 @@ async function findActivitiesWithPlaces() {
   });
 }
 
+async function getPlaces() {
+  return prisma.place.findMany();
+}
 
 const activitiesRepository = {
-    findActivitiesWithPlaces
-  };
+  findActivitiesWithPlaces,
+  getPlaces,
+};
   
-  export default activitiesRepository;
-  
+export default activitiesRepository;
