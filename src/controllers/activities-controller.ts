@@ -24,3 +24,13 @@ export async function getPlaces(req: AuthenticatedRequest, res: Response) {
   }
 }
 
+export async function getActivitiesByDate(req: AuthenticatedRequest, res: Response) {
+  const { date } = req.params;
+  try {
+    const activities = await activitiesService.getActivitiesByDate(date);
+    return res.status(httpStatus.OK).send(activities);
+  } catch (error) {
+    return res.sendStatus(httpStatus.NOT_FOUND);
+  }
+}
+
