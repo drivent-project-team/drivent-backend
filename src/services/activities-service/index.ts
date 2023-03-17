@@ -1,5 +1,5 @@
-import { notFoundError } from '@/errors';
-import activitiesRepository from '@/repositories/activities-repository';
+import { notFoundError } from "@/errors";
+import activitiesRepository from "@/repositories/activities-repository";
 
 async function getEventActivities() {
   const dates = await activitiesRepository.findActivitiesWithPlaces();
