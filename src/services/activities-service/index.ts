@@ -1,17 +1,65 @@
-import { notFoundError } from "@/errors";
+import { conflictError, notFoundError, unpaidTicketError } from "@/errors";
 import activitiesRepository from "@/repositories/activities-repository";
+import enrollmentRepository from "@/repositories/enrollment-repository";
+import ticketRepository from "@/repositories/ticket-repository";
 
 async function getEventActivities() {
-    const dates = await activitiesRepository.findActivitiesWithPlaces();
-    if (!dates) {
-      throw notFoundError();
-    }
-    return dates;
+  const dates = await activitiesRepository.findActivitiesWithPlaces();
+  if (!dates) {
+    throw notFoundError();
   }
+  return dates;
+}
 
+async function postActivity(userId: number, activityId: number) {
+  const enrollment = await enrollmentRepository.findWithAddressByUserId(userId);
 
-  const activitiesService = {
-    getEventActivities
-  };
+  if (!enrollment) {
+    throw notFoundError();
+  }
   
-  export default activitiesService;
+  const ticket = await ticketRepository.findTicketByEnrollmentId(enrollment.id);  
+  if (!ticket) {
+    throw notFoundError();
+  }
+  if (ticket.status !== "PAID") {
+    throw unpaidTicketError();
+  }
+  
+  const activity = await activitiesRepository.findActivityById(activityId);
+  if (!activity) {
+    throw notFoundError();
+  }  
+  
+  const activityStart = activity.startAt.split(":");
+  const activityEnd = activity.endsAt.split(":");
+
+  const userActivities = await activitiesRepository.findActivitiesByUserId(userId);
+
+  userActivities.forEach((userActivity) => {
+    if (userActivity.activityId === activityId) {
+      throw conflictError("You already joined this activity");
+    }
+    const start = userActivity.Activity.startAt;
+    const startHours = start.split(":");
+
+    const end = userActivity.Activity.endsAt;
+    const endHours = end.split(":");
+
+    if(Number(startHours[0]) >= Number(activityEnd[0]) || Number(activityStart[0]) >= Number(endHours[0])) {
+      console.log("SEM CONFLITO");
+    } else {
+      console.log("CONFLITO");
+      throw conflictError("You already have an activity at this date");
+    }
+  });
+
+  return activitiesRepository.create(userId, activityId);
+}
+
+const activitiesService = {
+  getEventActivities,
+  postActivity
+};
+
+export default activitiesService;
