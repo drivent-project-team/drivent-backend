@@ -6,7 +6,13 @@ async function findActivitiesWithPlaces() {
   return prisma.activity.findMany({
     include: {
       Place: true,
+      _count: {
+        select: { userActivity: true },
+      }
     },
+    orderBy: {
+      id: "asc",
+    }
   });
 }
 
