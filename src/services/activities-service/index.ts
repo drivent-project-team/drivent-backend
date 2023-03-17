@@ -12,15 +12,26 @@ async function getEventActivities() {
 
 async function getPlaces() {
   const places = await activitiesRepository.getPlaces();
-  if(!places) {
+  if (places.length === 0) {
     throw notFoundError();
   }
   return places;
 }
 
+async function getActivitiesByDate(date: string) {
+  const activities = await activitiesRepository.findActivitiesByDate(date);
+
+  if (activities.length === 0) {
+    throw notFoundError();
+  }
+
+  return activities;
+}
+
 const activitiesService = {
   getEventActivities,
   getPlaces,
+  getActivitiesByDate,
 };
 
 export default activitiesService;
