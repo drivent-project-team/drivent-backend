@@ -69,7 +69,7 @@ describe('postActivity', () => {
       },
     ];
     jest.spyOn(activitiesRepository, 'findActivityById').mockImplementationOnce((): any => mockedActivity);
-    jest.spyOn(activitiesRepository, 'findActivitiesByUserId').mockImplementationOnce((): any => mockedUserActivities);
+    jest.spyOn(activitiesRepository, 'findUserActivitiesByUserId').mockImplementationOnce((): any => mockedUserActivities);
 
     const promise = activitiesService.postActivity(userId, mockedUserActivities[0].activityId);
 
@@ -92,7 +92,7 @@ describe('postActivity', () => {
       },
     ];
     jest.spyOn(activitiesRepository, 'findActivityById').mockImplementationOnce((): any => mockedNewActivity);
-    jest.spyOn(activitiesRepository, 'findActivitiesByUserId').mockImplementationOnce((): any => mockedUserActivities);
+    jest.spyOn(activitiesRepository, 'findUserActivitiesByUserId').mockImplementationOnce((): any => mockedUserActivities);
 
     const promise = activitiesService.postActivity(userId, mockedNewActivity.id);
 
@@ -115,7 +115,7 @@ describe('postActivity', () => {
       },
     ];
     jest.spyOn(activitiesRepository, 'findActivityById').mockImplementationOnce((): any => mockedNewActivity);
-    jest.spyOn(activitiesRepository, 'findActivitiesByUserId').mockImplementationOnce((): any => mockedUserActivities);
+    jest.spyOn(activitiesRepository, 'findUserActivitiesByUserId').mockImplementationOnce((): any => mockedUserActivities);
 
     const promise = activitiesService.postActivity(userId, mockedNewActivity.id);
 

@@ -40,9 +40,10 @@ async function postActivity(userId: number, activityId: number) {
   const activityStart = activity.startAt.split(":")[0] + activity.startAt.split(":")[1];
   const activityEnd = activity.endsAt.split(":")[0] + activity.endsAt.split(":")[1];
 
-  const userActivities = await activitiesRepository.findActivitiesByUserId(userId);
+  const userActivities = await activitiesRepository.findUserActivitiesByUserId(userId);
+  const userActivitiesByDate = userActivities.filter((a) => a.Activity.date === activity.date);
 
-  userActivities.forEach((userActivity) => {
+  userActivitiesByDate.forEach((userActivity) => {
     if (userActivity.activityId === activityId) {
       throw conflictError("You already joined this activity!");
     }

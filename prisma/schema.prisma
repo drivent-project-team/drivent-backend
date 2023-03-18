@@ -160,6 +160,7 @@ model Activity {
   createdAt    DateTime       @default(now())
   updatedAt    DateTime       @updatedAt
   userActivity userActivity[]
+  @@index([date])
 }
 
 model userActivity {

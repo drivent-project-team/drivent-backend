@@ -27,7 +27,7 @@ export function mockActivity(startAt: string, endsAt: string) {
     id: faker.datatype.number({ min: 1 }),
     capacity: faker.datatype.number({ min: 1 }),
     name: faker.lorem.words(),
-    date: faker.datatype.datetime(),
+    date: '2023-03-15',
     startAt,
     endsAt,
     placeId: faker.datatype.number({ min: 1 }),
