@@ -76,12 +76,20 @@ async function postActivity(userId: number, activityId: number) {
   return activitiesRepository.create(userId, activityId);
 }
 
+async function getUserActivities( userId: number)  {
+  const userActivities = await activitiesRepository.findActivitiesByUserId(userId);
+  if(!userActivities) {
+    throw notFoundError();
+  }
+  return userActivities.map((a) => a.activityId);
+}
+
 const activitiesService = {
   getEventActivities,
   getPlaces,
   getActivitiesByDate,
   postActivity,
+  getUserActivities,
 };
-
 
 export default activitiesService;
