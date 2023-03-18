@@ -48,7 +48,7 @@ describe('GET /activities', () => {
       const user = await createUser();
       const token = await generateValidToken(user);
       const place = await createPlace();
-      const createdActivity = await createActivity(place.id);
+      const createdActivity = await createActivity(place.id, '09:00', '10:00');
       const createdUserActivity = await createUserActivity(user.id, createdActivity.id);
 
       const response = await server.get('/activities').set('Authorization', `Bearer ${token}`);
@@ -111,7 +111,7 @@ describe('GET /activities/:date', () => {
       const user = await createUser();
       const token = await generateValidToken(user);
       const place = await createPlace();
-      const createdActivity = await createActivity(place.id);
+      const createdActivity = await createActivity(place.id, '09:00', '10:00');
 
       const response = await server
         .get(`/activities/${createdActivity.date.toISOString()}`)
@@ -209,7 +209,7 @@ describe('POST /activities', () => {
       const user = await createUser();
       const token = await generateValidToken(user);
       const place = await createPlace();
-      const createdActivity = await createActivity(place.id);
+      const createdActivity = await createActivity(place.id, '09:00', '10:00');
 
       const response = await server.post('/activities').set('Authorization', `Bearer ${token}`).send({});
 
@@ -220,7 +220,7 @@ describe('POST /activities', () => {
       const user = await createUser();
       const token = await generateValidToken(user);
       const place = await createPlace();
-      const createdActivity = await createActivity(place.id);
+      const createdActivity = await createActivity(place.id, '09:00', '10:00');
       const body = { activityId: createdActivity.id };
 
       const response = await server.post('/activities').set('Authorization', `Bearer ${token}`).send(body);
@@ -228,6 +228,28 @@ describe('POST /activities', () => {
         where: {
           userId: user.id,
           activityId: createdActivity.id,
+        },
+      });
+
+      expect(response.status).toBe(httpStatus.CREATED);
+      expect(createdUserActivity).toBeDefined();
+    });
+
+    it('should respond with status 201 when non-conflicting new activity time', async () => {
+      const user = await createUser();
+      const token = await generateValidToken(user);
+      const place = await createPlace();
+      const createdActivity1 = await createActivity(place.id, '09:00', '10:00');
+      const createdActivity2 = await createActivity(place.id, '10:00', '11:00');
+      const body1 = { activityId: createdActivity1.id };
+      const body2 = { activityId: createdActivity2.id };
+
+      await server.post('/activities').set('Authorization', `Bearer ${token}`).send(body1);
+      const response = await server.post('/activities').set('Authorization', `Bearer ${token}`).send(body2);
+      const createdUserActivity = await prisma.userActivity.findFirst({
+        where: {
+          userId: user.id,
+          activityId: createdActivity2.id,
         },
       });
 

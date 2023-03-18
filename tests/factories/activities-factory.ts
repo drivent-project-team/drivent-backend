@@ -9,14 +9,14 @@ export async function createPlace() {
   });
 }
 
-export async function createActivity(placeId: number) {
+export async function createActivity(placeId: number, startAt: string, endsAt: string) {
   return await prisma.activity.create({
     data: {
       capacity: Number(faker.random.numeric()),
       name: faker.lorem.words(),
       date: faker.datatype.datetime(),
-      startAt: '09:00',
-      endsAt: '10:00',
+      startAt,
+      endsAt,
       placeId,
     },
   });
