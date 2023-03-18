@@ -46,13 +46,11 @@ export async function postActivity(req: AuthenticatedRequest, res: Response) {
     await activitiesService.postActivity(Number(userId), Number(activityId));
     return res.sendStatus(httpStatus.CREATED);
   } catch (error) {
-    if (error.name === "UnpaidTicketError") {
-      return res.sendStatus(httpStatus.UNAUTHORIZED);
-    } else if (error.name === "NotFoundError") {
-      return res.sendStatus(httpStatus.NOT_FOUND);
-    } else if (error.name === "ConflictError") {
+    console.log(error)
+    if (error.name === "ConflictError") {
       return res.sendStatus(httpStatus.CONFLICT);
-    } else {
+    }
+    if (error.name === "NotFoundError") {
       return res.sendStatus(httpStatus.NOT_FOUND);
     }
   }
