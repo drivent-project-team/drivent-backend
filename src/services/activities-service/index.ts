@@ -31,45 +31,33 @@ async function getActivitiesByDate(date: string) {
 }
 
 async function postActivity(userId: number, activityId: number) {
-  const enrollment = await enrollmentRepository.findWithAddressByUserId(userId);
-
-  if (!enrollment) {
-    throw notFoundError();
-  }
-  
-  const ticket = await ticketRepository.findTicketByEnrollmentId(enrollment.id);  
-  if (!ticket) {
-    throw notFoundError();
-  }
-  if (ticket.status !== "PAID") {
-    throw unpaidTicketError();
-  }
   
   const activity = await activitiesRepository.findActivityById(activityId);
   if (!activity) {
     throw notFoundError();
   }  
   
-  const activityStart = activity.startAt.split(":");
-  const activityEnd = activity.endsAt.split(":");
+  const activityStart = activity.startAt.split(":")[0] + activity.startAt.split(":")[1];
+  const activityEnd = activity.endsAt.split(":")[0] + activity.endsAt.split(":")[1];
 
-  const userActivities = await activitiesRepository.findActivitiesByUserId(userId);
+  const userActivities = await activitiesRepository.findUserActivitiesByUserId(userId);
+  const userActivitiesByDate = userActivities.filter((a) => a.Activity.date === activity.date);
 
-  userActivities.forEach((userActivity) => {
+  userActivitiesByDate.forEach((userActivity) => {
     if (userActivity.activityId === activityId) {
-      throw conflictError("You already joined this activity");
+      throw conflictError("You already joined this activity!");
     }
     const start = userActivity.Activity.startAt;
-    const startHours = start.split(":");
+    const startHours = start.split(":")[0] + start.split(":")[1];
 
     const end = userActivity.Activity.endsAt;
-    const endHours = end.split(":");
+    const endHours = end.split(":")[0] + end.split(":")[1];
 
-    if(Number(startHours[0]) >= Number(activityEnd[0]) || Number(activityStart[0]) >= Number(endHours[0])) {
+    if(Number(startHours) >= Number(activityEnd) || Number(activityStart) >= Number(endHours)) {
       console.log("SEM CONFLITO");
     } else {
       console.log("CONFLITO");
-      throw conflictError("You already have an activity at this date");
+      throw conflictError("You already have an activity at this time!");
     }
   });
 

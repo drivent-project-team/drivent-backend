@@ -46,7 +46,7 @@ async function findActivityById(id: number) {
   });
 }
 
-async function findActivitiesByUserId(userId: number) {
+async function findUserActivitiesByUserId(userId: number) {
   return prisma.userActivity.findMany({
     where: {
       userId
@@ -63,7 +63,7 @@ const activitiesRepository = {
   findActivitiesByDate,
   create,
   findActivityById,
-  findActivitiesByUserId,
+  findUserActivitiesByUserId,
 };
 
 export default activitiesRepository;
