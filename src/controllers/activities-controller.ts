@@ -58,3 +58,14 @@ export async function postActivity(req: AuthenticatedRequest, res: Response) {
   }
 }
 
+export async function getUserActivities(req: AuthenticatedRequest, res: Response) {
+  const { userId } = req;
+ 
+  try {
+    const userActivities = await activitiesService.getUserActivities(userId);
+    return res.status(200).send(userActivities);
+  } catch (error) {
+    console.log(error);
+    return res.sendStatus(httpStatus.NOT_FOUND);
+  }
+}

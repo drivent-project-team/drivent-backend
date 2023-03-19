@@ -1,7 +1,6 @@
 import { prisma } from "@/config";
 import dayjs from "dayjs";
 
-
 async function findActivitiesWithPlaces() {
   return prisma.activity.findMany({
     include: {
@@ -62,7 +61,7 @@ const activitiesRepository = {
   findActivitiesWithPlaces,
   getPlaces,
   findActivitiesByDate,
-   create,
+  create,
   findActivityById,
   findActivitiesByUserId,
 };
