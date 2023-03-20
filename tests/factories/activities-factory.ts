@@ -1,5 +1,5 @@
-import { prisma } from '@/config';
-import faker from '@faker-js/faker';
+import { prisma } from "@/config";
+import faker from "@faker-js/faker";
 
 export async function createPlace() {
   return await prisma.place.create({
@@ -27,11 +27,11 @@ export function mockActivity(startAt: string, endsAt: string) {
     id: faker.datatype.number({ min: 1 }),
     capacity: faker.datatype.number({ min: 1 }),
     name: faker.lorem.words(),
-    date: '2023-03-15',
+    date: "2023-03-15",
     startAt,
     endsAt,
     placeId: faker.datatype.number({ min: 1 }),
-  }
+  };
 }
 
 export async function createUserActivity(userId: number, activityId: number) {
