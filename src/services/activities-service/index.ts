@@ -31,7 +31,6 @@ async function getActivitiesByDate(date: string) {
 }
 
 async function postActivity(userId: number, activityId: number) {
-  
   const activity = await activitiesRepository.findActivityById(activityId);
   if (!activity) {
     throw notFoundError();
@@ -65,7 +64,7 @@ async function postActivity(userId: number, activityId: number) {
 }
 
 async function getUserActivities( userId: number)  {
-  const userActivities = await activitiesRepository.findActivitiesByUserId(userId);
+  const userActivities = await activitiesRepository.findUserActivitiesByUserId(userId);
   if(!userActivities) {
     throw notFoundError();
   }
