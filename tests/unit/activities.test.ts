@@ -71,7 +71,7 @@ describe('postActivity', () => {
     jest.spyOn(activitiesRepository, 'findActivityById').mockImplementationOnce((): any => mockedActivity);
     jest.spyOn(activitiesRepository, 'findUserActivitiesByUserId').mockImplementationOnce((): any => mockedUserActivities);
 
-    const promise = activitiesService.postActivity(userId, mockedUserActivities[0].activityId);
+    const promise = activitiesService.postActivity(userId, mockedActivity.id);
 
     expect(promise).rejects.toEqual({
       name: 'ConflictError',
